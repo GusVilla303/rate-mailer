@@ -20,4 +20,13 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
   end
+
+  context "current interest rate" do
+    it "is lower than the new (market) rate" do
+      user = User.new
+      new_rate = user.update_rate
+
+      expect(user.rate).to eql(new_rate)
+    end
+  end
 end

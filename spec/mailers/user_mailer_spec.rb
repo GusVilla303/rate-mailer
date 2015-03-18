@@ -2,11 +2,12 @@ require "rails_helper"
 
 RSpec.describe UserMailer, type: :mailer do
   describe '#rate_email' do
-    let(:user) { mock_model User, email: 'rate-mailer@example.com' }
-    let(:mail) { UserMailer.rate_email(user) }
+    new_rate = 3.55
+    let(:user) { mock_model User, email: 'rate-mailer@example.com', rate: 6.38 }
+    let(:mail) { UserMailer.rate_email(user, new_rate) }
 
     it 'renders the subject' do
-      expect(mail.subject).to eql('Rates have dropped! Refinance today!')
+      expect(mail.subject).to eql("Rates have dropped by #{user.rate - new_rate} for you! Refinance today!")
     end
 
     it 'renders the receiver email' do

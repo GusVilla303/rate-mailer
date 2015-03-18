@@ -1,8 +1,11 @@
 class UserMailer < ApplicationMailer
   default from: 'rate-mailer@example.com'
 
-  def rate_email(user)
-    @user = user
-    mail(to: @user.email, subject: "Rates have dropped! Refinance today!")
+  def rate_email(user, new_rate)
+    @user     = user
+    @new_rate = new_rate
+    mail(to: @user.email,
+         subject: "Rates have dropped by #{@user.rate - @new_rate} for you! Refinance today!"
+      )
   end
 end
