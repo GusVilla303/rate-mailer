@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   def update_rate
     sleep(1.1)
-    rand(100)
+    rand(10)
   end
 
   def send_email?

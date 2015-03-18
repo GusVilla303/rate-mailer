@@ -23,10 +23,12 @@ RSpec.describe User, type: :model do
 
   context "current interest rate" do
     it "is lower than the new (market) rate" do
-      user = User.new
+      user = User.new(email: 'customer@example.com', rate: 4.00)
       new_rate = user.update_rate
 
-      expect(user.rate).to eql(new_rate)
+      expect(user.rate).to_not eql(new_rate)
+      expect(user.rate).to eql(new_rate)  #This lets confirms if my test is actually working
+
     end
   end
 end
