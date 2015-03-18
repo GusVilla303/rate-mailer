@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   end
 
   def send_email?
-    @new_rate = update_rate
-    rate_delta = (self.rate - @new_rate)
+    new_rate = update_rate
+    rate_delta = (self.rate - new_rate)
     rate_delta >= SET_DELTA
   end
 
