@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
       new_rate = user.update_rate
 
       expect(user.rate).to_not eql(new_rate)
-      expect(user.rate).to eql(new_rate)  #This lets confirms if my test is actually working
+      expect(user.rate).to eql(new_rate)  #This lets me see the output of 'rate' and 'new_rate'
 
     end
   end
