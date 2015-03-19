@@ -5,12 +5,12 @@ class User < ActiveRecord::Base
 
   def update_rate
     sleep(1.1)
-    rand(10)
+    rand(1..10)
   end
 
   def send_email?
-    new_rate = update_rate
-    rate_delta = (self.rate - new_rate)
+    new_rate    = (update_rate)
+    rate_delta  = (self.rate - new_rate)
     rate_delta >= SET_DELTA
   end
 
