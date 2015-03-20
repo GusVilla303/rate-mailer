@@ -7,7 +7,7 @@ RSpec.describe UserMailer, type: :mailer do
     let(:mail) { UserMailer.marketing_email(user, new_rate) }
 
     it 'renders the subject' do
-      expect(mail.subject).to eql("Rates have dropped by #{user.rate - new_rate} for you! Refinance today!")
+      expect(mail.subject).to eql("Rates have dropped by #{user.rate - new_rate} % for you! Refinance today!")
     end
 
     it 'renders the receiver email' do
