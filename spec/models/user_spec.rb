@@ -36,4 +36,26 @@ RSpec.describe User, type: :model do
       expect(new_rate).to be <= user.rate
     end
   end
+
+  context '#rate_qualifies?' do
+    it "will return true if user rate is greater than new rate" do
+      user = User.create!(email: 'customer@example.com', rate: 10.00)
+      result = user.rate_qualifies?
+
+      expect(result).to eql(true)
+    end
+
+    it "will return false if user rate is less than new rate" do
+      user = User.create!(email: 'customer@example.com', rate: 1.00)
+      result = user.rate_qualifies?
+
+      expect(result).to eql(false)
+    end
+  end
+
+  context '#send_email?' do
+    xit 'will send a marketing email if user rate is greater than new rate' do
+      
+    end
+  end
 end

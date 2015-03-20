@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
   default from: 'rate-mailer@example.com'
 
-  def rate_email(user, new_rate)
+  def marketing_email(user, new_rate)
     @user     = user
     @new_rate = new_rate
     mail(to: @user.email,

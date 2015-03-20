@@ -8,14 +8,14 @@ class User < ActiveRecord::Base
     rand(1..10)
   end
 
-  def send_email?
-    new_rate    = (update_rate)
+  def rate_qualifies?
+    new_rate    = self.update_rate
     rate_delta  = (self.rate - new_rate)
     rate_delta >= SET_DELTA
   end
 
-  def deliver_email
-    if self.send_email?
+  def send_email?
+    if self.rate_qualifies?
       UserMailer.rate_email(self).deliver_now
     end
   end
