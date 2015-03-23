@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
 
 
-  SET_DELTA = 2.00 #Need to be able to modify SET_DELTA
+  SET_DELTA = 2.00
 
   def update_rate
     sleep(1.1)

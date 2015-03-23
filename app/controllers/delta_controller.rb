@@ -1,4 +1,4 @@
-class DeltasController < ApplicationController
+class DeltaController < ApplicationController
   def new
   end
 
