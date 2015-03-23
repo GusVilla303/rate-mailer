@@ -54,13 +54,13 @@ RSpec.describe User, type: :model do
   end
 
   context '#send_email?' do
-    it 'will send a marketing email' do
+    it "will send a marketing email if difference in rates is greater or equal 'delta'" do
       user = User.create!(email: 'customer@example.com', rate: 13.00)
 
       expect { user.send_email? }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
-    it 'will NOT send a marketing email' do
+    it "will NOT send a marketing email if difference in rates is less than 'delta'" do
       user = User.create!(email: 'customer@example.com', rate: 0.99)
 
       expect { user.send_email? }.to change { ActionMailer::Base.deliveries.count }.by(0)

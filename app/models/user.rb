@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   validates :email, presence: true
 
-  SET_DELTA = 2.00
+
+  SET_DELTA = 2.00 #Need to be able to modify SET_DELTA
 
   def update_rate
     sleep(1.1)
@@ -9,15 +10,18 @@ class User < ActiveRecord::Base
   end
 
   def rate_qualifies?
-    new_rate    = update_rate
+    @new_rate   = update_rate
     rate_delta  = (self.rate - new_rate)
-    rate_delta >= SET_DELTA
+    rate_delta >= SET_DELTA              #Delta.last.rate
   end
 
   def send_email?
     if self.rate_qualifies?
-      UserMailer.marketing_email(self, update_rate).deliver_now
+      UserMailer.marketing_email(self, new_rate).deliver_now
     end
   end
 
+  private
+
+  attr_reader :new_rate
 end
