@@ -1,4 +1,4 @@
-class DeltaController < ApplicationController
+class DeltasController < ApplicationController
   def new
   end
 
@@ -7,7 +7,7 @@ class DeltaController < ApplicationController
 
   def edit
   end
-  
+
   def delta_input
     # @delta = Delta.last.rate
     # @users = User.where(emailed: 2)
