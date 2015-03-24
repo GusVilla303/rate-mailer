@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  before(:each) do
+    deltum = Deltum.create!(rate: 2.00)
+  end
+
   context "validation" do
     it "is invalid if user's email is empty" do
       user = User.create(email: '')

@@ -1,24 +1,32 @@
 class DeltaController < ApplicationController
   def new
-  end
-
-  def update
+    @deltum = Deltum.new
   end
 
   def edit
+    @deltum = Deltum.find(params[:id])
   end
 
-  def delta_input
-    # @delta = Delta.last.rate
-    # @users = User.where(emailed: 2)
+  def update
+    @deltum = Deltum.find(params[:id])
+    if @deltum.update(deltum_params)
+      redirect_to deltum_path(@deltum)
+    else
+      render :edit
+    end
+  end
+
+  def deltum_input
     users = User.all #what if you have 10 million users?
-    delta = Delta.find(params[:id])
-    delta.update(delta_params)
+    deltum = Deltum.find(params[:id])
+    deltum.update(deltum_params)
     #sidekiq users.each { |user| user.send_email? }
-    redirect_to edit_delta_path(delta)
+    redirect_to edit_deltum_path(deltum)
   end
 
-  def delta_params
-    params.require(:delta).permit(:rate)
+  private
+
+  def deltum_params
+    params.require(:deltum).permit(:rate)
   end
 end
