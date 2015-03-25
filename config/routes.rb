@@ -1,7 +1,9 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
-  get 'delta/new'
-  get 'delta/update'
-  get 'delta/edit'
   resources :users
   resources :delta
+
+  root to: 'delta#show'
+  mount Sidekiq::Web, at: '/sidekiq'
 end

@@ -1,4 +1,9 @@
 class DeltaController < ApplicationController
+
+  def show
+    @deltum = Deltum.last
+  end
+
   def new
     @deltum = Deltum.new
   end
@@ -16,13 +21,15 @@ class DeltaController < ApplicationController
     end
   end
 
-  def deltum_input
-    users = User.all #what if you have 10 million users?
-    deltum = Deltum.find(params[:id])
-    deltum.update(deltum_params)
-    #sidekiq users.each { |user| user.send_email? }
-    redirect_to edit_deltum_path(deltum)
-  end
+
+  #
+  # def deltum_input
+  #   users = User.all #what if you have 10 million users?
+  #   deltum = Deltum.find(params[:id])
+  #   deltum.update(deltum_params)
+  #   #sidekiq users.each { |user| user.send_email? }
+  #   redirect_to deltum_path(deltum)
+  # end
 
   private
 

@@ -1,7 +1,9 @@
+require 'faker'
+
 namespace :db do
   desc "Populate database with users"
   task  populate: :environment do
-    require 'faker'
+    Rake::Task['db:reset'].invoke
 
     100.times do
       user = User.create!(email: Faker::Internet.email,

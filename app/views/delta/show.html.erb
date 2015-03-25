@@ -1,0 +1,20 @@
+<% provide(:title, "Update deltum") %>
+<h1>Update the Deltum</h1>
+
+<h2> Currently the rate deltum is set to: <%= Deltum.last.rate %> % </h2>
+
+
+<%= form_for(@deltum) do |f|  %>
+  <ul>
+  <% @deltum.errors.full_messages.each do |error| %>
+    <li><%= error  %></li>
+  <% end %>
+  </ul>
+  <p>
+    <%= f.label :rate %>
+    <%= f.text_field :rate, class: 'form-control' %>
+  </p>
+  <p>
+    <%= f.submit "Update Deltum" %>
+  </p>
+<% end %>

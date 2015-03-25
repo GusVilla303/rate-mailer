@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   def send_email?
     if self.rate_qualifies?
-      UserMailer.marketing_email(self, new_rate).deliver_now
+      EmailWorker.perform_async(self.id, new_rate)
     end
   end
 
