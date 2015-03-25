@@ -17,22 +17,12 @@ class DeltaController < ApplicationController
     if @deltum.update(deltum_params)
       users = User.all
       users.each { |user| user.send_email? }
-      redirect_to root_path
 
+      redirect_to root_path
     else
       render :edit
     end
   end
-
-
-
-  # def deltum_input
-  #   users = User.all #what if you have 10 million users?
-  #   @deltum = Deltum.find(params[:id])
-  #   @deltum.update(deltum_params)
-  #   #sidekiq users.each { |user| user.send_email? }
-  #   redirect_to deltum_path(deltum)
-  # end
 
   private
 
