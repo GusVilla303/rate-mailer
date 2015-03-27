@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
     @user     = user
     @new_rate = new_rate
     mail(to: @user.email,
-         subject: "Rates have dropped by #{@user.rate - @new_rate} % for you! Refinance today!"
-      )
+         subject: "Rates have dropped by #{@user.rate - @new_rate} % ! Refinance today!"
+    )
   end
 end

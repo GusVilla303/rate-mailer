@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   end
 
   def rate_qualifies?
-    @new_rate   = update_rate
+    @new_rate   = self.update_rate
     rate_delta  = (self.rate - new_rate)
     rate_delta >= Deltum.last.rate
   end
