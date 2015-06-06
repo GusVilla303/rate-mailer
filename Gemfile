@@ -12,8 +12,8 @@ gem 'unicorn'
 gem 'faker'
 gem 'sidekiq'
 gem 'sinatra', require: false
-gem 'slim' 
-
+gem 'slim'
+gem 'redis-rails' 
 
 
 # Use Capistrano for deployment
